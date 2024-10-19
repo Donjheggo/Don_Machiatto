@@ -14,17 +14,35 @@ import { Text } from "~/components/ui/text";
 import { Coffee } from "lucide-react-native";
 import { Button } from "~/components/ui/button";
 import { CreateOrder } from "~/lib/actions/orders";
+import { Alert } from "react-native";
+import { useRouter } from "expo-router";
 
 export const OrderForm = ({ product_id }: { product_id: string }) => {
+  const router = useRouter();
   const [form, setForm] = useState<OrderFormT>({
     product_id: product_id,
     name: "",
-    size: null,
+    size: "SMALL",
     quantity: 0,
   });
 
   const handleSubmit = async () => {
-    await CreateOrder(form);
+    const order_number = await CreateOrder(form);
+    if (order_number) {
+      Alert.alert(
+        "Order Created",
+        `Your Order Number is: ${order_number}`,
+        [
+          {
+            text: "OK",
+            onPress: () => {
+              // Navigate to another route after the alert is closed
+              router.push("/(tabs)/products");
+            },
+          },
+        ]
+      );
+    }
   };
 
   return (

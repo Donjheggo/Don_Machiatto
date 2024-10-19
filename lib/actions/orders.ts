@@ -4,7 +4,7 @@ import type { OrderFormT } from "~/components/order/order-form";
 
 export async function CreateOrder(form: OrderFormT) {
   try {
-    const { error } = await supabase
+    const { error, data } = await supabase
       .from("orders")
       .insert({
         product_id: form.product_id,
@@ -18,8 +18,7 @@ export async function CreateOrder(form: OrderFormT) {
       Alert.alert(error.message);
       return false;
     }
-    Alert.alert("Order created.");
-    return true;
+    return data[0].order_number;
   } catch (error) {
     if (error instanceof Error) {
       Alert.alert(error.message);
