@@ -1,5 +1,5 @@
 import SearchBar from "~/components/products/search-bar";
-import { View, SafeAreaView, ScrollView } from "react-native";
+import { View, SafeAreaView, ScrollView, Platform, StatusBar } from "react-native";
 import { useState, useEffect } from "react";
 import { Tables } from "~/database.types";
 import { SearchProducts } from "~/lib/actions/products";
@@ -19,7 +19,13 @@ export default function Screen() {
   }, [query]);
 
   return (
-    <SafeAreaView className="h-full">
+    <SafeAreaView
+      className="h-full"
+      style={{
+        flex: 1,
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      }}
+    >
       <ScrollView>
         <View className="p-5">
           <SearchBar />

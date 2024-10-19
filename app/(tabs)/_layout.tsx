@@ -25,6 +25,7 @@ export default function TabLayout() {
         options={{
           title: "Products",
           tabBarIcon: ({ color }) => <Armchair size={28} color={color} />,
+          href: null,
         }}
       />
 

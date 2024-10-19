@@ -7,19 +7,13 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 import { useState } from "react";
-import { View, Alert } from "react-native";
+import { View } from "react-native";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Text } from "~/components/ui/text";
 import { Coffee } from "lucide-react-native";
 import { Button } from "~/components/ui/button";
-
-type OrderFormT = {
-  product_id: string;
-  name: string;
-  size: "SMALL" | "MEDIUM" | "LARGE" | null;
-  quantity: number;
-};
+import { CreateOrder } from "~/lib/actions/orders";
 
 export const OrderForm = ({ product_id }: { product_id: string }) => {
   const [form, setForm] = useState<OrderFormT>({
@@ -29,8 +23,8 @@ export const OrderForm = ({ product_id }: { product_id: string }) => {
     quantity: 0,
   });
 
-  const handleSubmit = () => {
-    Alert.alert(String(form));
+  const handleSubmit = async () => {
+    await CreateOrder(form);
   };
 
   return (
@@ -94,11 +88,7 @@ export const OrderForm = ({ product_id }: { product_id: string }) => {
         />
       </View>
       <View>
-        <Button
-          onPress={() => Alert.alert("Add to cart")}
-          size="lg"
-          className="mt-5 flex flex-row"
-        >
+        <Button onPress={handleSubmit} size="lg" className="mt-5 flex flex-row">
           <Text className="text-white" style={{ fontSize: 20 }}>
             Order Now
           </Text>
@@ -110,3 +100,9 @@ export const OrderForm = ({ product_id }: { product_id: string }) => {
 };
 
 export const sizes = ["SMALL", "MEDIUM", "LARGE"];
+export type OrderFormT = {
+  product_id: string;
+  name: string;
+  size: "SMALL" | "MEDIUM" | "LARGE" | null;
+  quantity: number;
+};

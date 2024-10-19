@@ -1,4 +1,10 @@
-import { View, SafeAreaView, ScrollView } from "react-native";
+import {
+  View,
+  SafeAreaView,
+  ScrollView,
+  Platform,
+  StatusBar,
+} from "react-native";
 import { Text } from "~/components/ui/text";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
@@ -7,6 +13,7 @@ import { GetProductById } from "~/lib/actions/products";
 import { Image } from "expo-image";
 import { blurhash } from "~/lib/utils";
 import { OrderForm } from "~/components/order/order-form";
+import BackButton from "~/components/back-button";
 
 export default function Screen() {
   const { id } = useLocalSearchParams();
@@ -21,9 +28,18 @@ export default function Screen() {
   }, [id]);
 
   return (
-    <SafeAreaView className="h-full">
+    <SafeAreaView
+      className="h-full"
+      style={{
+        flex: 1,
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      }}
+    >
       <ScrollView>
         <View className="p-5">
+          <View className="py-5">
+            <BackButton />
+          </View>
           {product?.image && (
             <Image
               placeholder={{ blurhash }}
