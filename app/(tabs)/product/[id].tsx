@@ -30,7 +30,7 @@ export default function Screen() {
 
   return (
     <SafeAreaView
-      className="h-full"
+      className="h-full bg-secondary"
       style={{
         flex: 1,
         paddingTop: StatusBar.currentHeight,
@@ -67,8 +67,8 @@ export default function Screen() {
                 <Text className="text-2xl" style={{ fontWeight: "semibold" }}>
                   {product?.name}
                 </Text>
-                <Text className="text-2xl text-muted-foreground">
-                  {product?.flavor}
+                <Text className="text-lg text-muted-foreground">
+                 Flavor: {product?.flavor}
                 </Text>
               </View>
               <View>

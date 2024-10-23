@@ -116,10 +116,8 @@ export const OrderForm = ({ product_id }: { product_id: string }) => {
       </View>
       <View>
         <Button onPress={handleSubmit} size="lg" className="mt-5 flex flex-row">
-          <Text className="text-white" style={{ fontSize: 20 }}>
-            Order Now
-          </Text>
-          <Coffee color="#fff" style={{ marginLeft: 10 }} />
+          <Text style={{ fontSize: 20 }}>Order Now</Text>
+          <Coffee color="#7F5539" style={{ marginLeft: 10 }} />
         </Button>
       </View>
     </View>

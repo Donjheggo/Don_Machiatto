@@ -15,8 +15,8 @@ export default function SearchBar() {
     <View className="relative justify-center">
       <Search style={styles.icon} />
       <Input
-        style={{paddingLeft: 40, fontSize: 20}}
-        className="dark:bg-black dark:text-white"
+        style={{ paddingLeft: 40, fontSize: 20 }}
+        className="bg-transparent text-primary-foreground"
         placeholder="Search..."
         defaultValue={params.query}
         onChangeText={(text) => {
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 10,
     zIndex: 1,
-    color: "#B08968",
+    color: "#7F5539",
   },
 });
