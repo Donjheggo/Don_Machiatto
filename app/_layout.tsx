@@ -10,7 +10,6 @@ import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 import { PortalHost } from "@rn-primitives/portal";
 import { setAndroidNavigationBar } from "~/lib/android-navigation-bar";
-import AuthProvider from "~/context/auth-context";
 import { usePathname } from "expo-router";
 
 const LIGHT_THEME: Theme = {
@@ -67,24 +66,16 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <AuthProvider>
-        <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen
-            name="index"
-            options={{
-              title: "",
-            }}
-          />
-          <Stack.Screen
-            name="(auth)"
-            options={{
-              title: "",
-            }}
-          />
-        </Stack>
-        <PortalHost />
-      </AuthProvider>
+      <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="index"
+          options={{
+            title: "",
+          }}
+        />
+      </Stack>
+      <PortalHost />
     </ThemeProvider>
   );
 }
