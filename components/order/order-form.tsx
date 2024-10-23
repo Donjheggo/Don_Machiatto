@@ -21,6 +21,10 @@ export const OrderForm = ({ product_id }: { product_id: string }) => {
   });
 
   const handleSubmit = async () => {
+    if (!form.name) {
+      Alert.alert("Please enter your name.");
+      return;
+    }
     const order_number = await CreateOrder(form);
     if (order_number) {
       Alert.alert("Order Created", `Your Order Number is: ${order_number}`, [
