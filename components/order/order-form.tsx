@@ -17,7 +17,7 @@ export const OrderForm = ({ product_id }: { product_id: string }) => {
     product_id: product_id,
     name: "",
     size: "SMALL",
-    quantity: 0,
+    quantity: 1,
   });
 
   const handleSubmit = async () => {
@@ -90,7 +90,7 @@ export const OrderForm = ({ product_id }: { product_id: string }) => {
             onPress={() =>
               setForm({
                 ...form,
-                quantity: form.quantity > 1 ? form.quantity - 1 : 0,
+                quantity: form.quantity > 1 ? form.quantity - 1 : 1,
               })
             }
           >
