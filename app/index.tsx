@@ -10,7 +10,7 @@ export default function Screen() {
         <Image
           source={require("../assets/images/index.png")}
           resizeMode="contain"
-          style={{ width: 300, height: 160 }}
+          style={{ width: 600, height: 250 }}
         />
 
         <Text className="font-semibold text-xl text-center text-white opacity-80">
@@ -19,7 +19,7 @@ export default function Screen() {
         </Text>
 
         <Pressable
-          onPress={() => router.push("/(auth)/sign-in")}
+          onPress={() => router.push("/(tabs)/products")}
           className="w-full"
         >
           <View className="w-full border text-center border-primary bg-foreground rounded-lg p-5 items-center flex justify-center overflow-hidden">
