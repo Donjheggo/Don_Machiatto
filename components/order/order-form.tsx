@@ -56,15 +56,15 @@ export const OrderForm = ({ product_id }: { product_id: string }) => {
           keyboardType="default"
         />
       </View>
-      <View className="flex-1">
+      <View>
         <Label nativeID="size" className="pb-1">
           Size
         </Label>
-        <View className="flex-1 justify-center items-center p-6">
+        <View className="py-4">
           <RadioGroup
             value={form.size}
             onValueChange={(value) => setForm({ ...form, size: value })}
-            className="gap-3 flex flex-row"
+            className="flex-row justify-center gap-6"
           >
             <RadioGroupItemWithLabel
               value="SMALL"
