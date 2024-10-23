@@ -11,6 +11,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        tabBarStyle: {display: 'none'},
         tabBarActiveTintColor: "#7F5539",
         tabBarInactiveTintColor: "#B08968",
         headerShown: false,
@@ -25,16 +26,10 @@ export default function TabLayout() {
         options={{
           title: "Products",
           tabBarIcon: ({ color }) => <Armchair size={28} color={color} />,
-          href: null,
         }}
       />
 
-      <Tabs.Screen
-        name="product/[id]"
-        options={{
-          href: null,
-        }}
-      />
+      <Tabs.Screen name="product/[id]" />
     </Tabs>
   );
 }
