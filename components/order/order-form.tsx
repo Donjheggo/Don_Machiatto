@@ -87,7 +87,12 @@ export const OrderForm = ({ product_id }: { product_id: string }) => {
         </Label>
         <View className="flex flex-row justify-between gap-2">
           <Button
-            onPress={() => setForm({ ...form, quantity: form.quantity - 1 })}
+            onPress={() =>
+              setForm({
+                ...form,
+                quantity: form.quantity > 1 ? form.quantity - 1 : 0,
+              })
+            }
           >
             <Minus color="#7F5539" />
           </Button>
