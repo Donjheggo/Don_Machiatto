@@ -49,7 +49,7 @@ export default function Screen() {
               <Image
                 placeholder={{ blurhash }}
                 source={product?.image}
-                style={{ borderRadius: 10, height: 300 }}
+                style={{ borderRadius: 10, height: 800 }}
                 contentFit="cover"
                 transition={1000}
               />

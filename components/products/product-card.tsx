@@ -17,14 +17,14 @@ export default function ProductCard({ item }: { item: ProductsT }) {
             source={item.image}
             placeholder={{ blurhash }}
             contentFit="cover"
-            style={{ height: 175, borderRadius: 10 }}
+            style={{ height: 400, borderRadius: 10 }}
             transition={1000}
           />
 
-          <Text className="text-xl" style={{ fontWeight: "bold" }}>
+          <Text className="text-4xl" style={{ fontWeight: "bold" }}>
             ₱{item.price.toLocaleString()}
           </Text>
-          <Text className="text-xl">{item.name}</Text>
+          <Text className="text-4xl">{item.name}</Text>
         </TouchableOpacity>
       </Link>
     </View>
