@@ -7,7 +7,7 @@ export function RadioGroupItemWithLabel({
   value,
   onLabelPress,
 }: {
-  value: "SMALL" | "MEDIUM" | "LARGE";
+  value: "GCASH" | "CASH";
   onLabelPress: () => void;
 }) {
   return (

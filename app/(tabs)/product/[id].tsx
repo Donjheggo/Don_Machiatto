@@ -28,6 +28,14 @@ export default function Screen() {
     fetchProduct();
   }, [id]);
 
+  if (!product) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView
       className="h-full bg-secondary"
@@ -68,7 +76,7 @@ export default function Screen() {
                   {product?.name}
                 </Text>
                 <Text className="text-lg text-muted-foreground">
-                 Flavor: {product?.flavor}
+                  Flavor: {product?.flavor}
                 </Text>
               </View>
               <View>
@@ -77,7 +85,7 @@ export default function Screen() {
                 </Text>
               </View>
             </View>
-            <OrderForm product_id={id as string} />
+            <OrderForm product={product} />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

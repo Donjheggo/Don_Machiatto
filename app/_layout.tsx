@@ -10,7 +10,7 @@ import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 import { PortalHost } from "@rn-primitives/portal";
 import { setAndroidNavigationBar } from "~/lib/android-navigation-bar";
-import { usePathname } from "expo-router";
+import { CartProvider } from "~/context/cart-context";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -65,16 +65,25 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-      <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-          name="index"
-          options={{
-            title: "",
-          }}
-        />
-      </Stack>
-      <PortalHost />
+      <CartProvider>
+        <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen
+            name="index"
+            options={{
+              title: "",
+            }}
+          />
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              title: "",
+              headerShown: false,
+            }}
+          />
+        </Stack>
+        <PortalHost />
+      </CartProvider>
     </ThemeProvider>
   );
 }
