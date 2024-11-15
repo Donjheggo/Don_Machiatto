@@ -65,6 +65,26 @@ export async function CreateOrder(form: OrderFormT) {
     return false;
   }
 
-  // Step 5: Return Order Number To Customer ////////////////////////////
+  // Step 5: Update Product Quantities
+  for (const ordered_product of ordered_products) {
+    const product = products.find(
+      (product) => product.id === ordered_product.product_id
+    );
+    const new_quantity = product?.quantity - ordered_product.product_quantity;
+
+    const { error: update_product_error } = await supabase
+      .from("products")
+      .update({ quantity: new_quantity })
+      .eq("id", ordered_product.product_id);
+
+    if (update_product_error) {
+      Alert.alert(
+        "Error updating product quantity: ",
+        update_product_error.message
+      );
+    }
+  }
+
+  // Step 6: Return Order Number To Customer ////////////////////////////
   return order_data[0].order_number;
 }
