@@ -12,7 +12,7 @@ export default function ProductCard({ item }: { item: ProductsT }) {
         href={{ pathname: "/(tabs)/product/[id]", params: { id: item.id } }}
         asChild
       >
-        <TouchableOpacity>
+        <TouchableOpacity disabled={item.quantity === 0}>
           <Image
             source={item.image}
             placeholder={{ blurhash }}
@@ -20,6 +20,11 @@ export default function ProductCard({ item }: { item: ProductsT }) {
             style={{ height: 400, borderRadius: 10 }}
             transition={1000}
           />
+          {item.quantity === 0 && (
+            <View className="absolute inset-0 bg-black/50 flex justify-center items-center">
+              <Text className="text-white text-lg font-bold">SOLD OUT</Text>
+            </View>
+          )}
 
           <Text className="text-4xl" style={{ fontWeight: "bold" }}>
             ₱{item.price.toLocaleString()}
